@@ -20,7 +20,7 @@ app.use(cors());
 
 
 app.get("/", (request, response) => {
-    response.send("Welcome to NEM-111 project of Anthropologie website");
+    response.send("Welcome to TradeMart website");
 });
 
 app.use("/users", authRouter);
