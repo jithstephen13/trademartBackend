@@ -19,7 +19,6 @@ const solarpanelSchema = mongoose.Schema({
       original :{ type: String, } ,
       discount :{ type: String, } ,
 
-    
 }, {
     versionKey: false
 });
