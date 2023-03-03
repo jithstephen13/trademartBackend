@@ -86,19 +86,19 @@ projectorRouter.get("/", async (request, response) => {
     }
 });
 
-const projector = require('../Assets/projector.json');
-const insertprojector = async () => {
-    try {
-        const docs = await ProjectorModel.insertMany(projector);
-        return Promise.resolve(docs);
-    } catch (err) {
-        return Promise.reject(err)
-    }
-};
+// const projector = require('../Assets/projector.json');
+// const insertprojector = async () => {
+//     try {
+//         const docs = await ProjectorModel.insertMany(projector);
+//         return Promise.resolve(docs);
+//     } catch (err) {
+//         return Promise.reject(err)
+//     }
+// };
 
-insertprojector()
-    .then((docs) => console.log(docs))
-    .catch((err) => console.log(err))
+// insertprojector()
+//     .then((docs) => console.log(docs))
+//     .catch((err) => console.log(err))
 
 
 module.exports = { projectorRouter };

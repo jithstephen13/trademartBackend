@@ -75,19 +75,46 @@ medicinRouter.get("/", async (request, response) => {
     }
 });
 
-const medicin = require('../Assets/medicin.json');
-const insertmedicin = async () => {
-    try {
-        const docs = await MedicinModel.insertMany(medicin);
-        return Promise.resolve(docs);
-    } catch (err) {
-        return Promise.reject(err)
-    }
-};
+// const medicin = require('../Assets/medicin.json');
+// const insertmedicin = async () => {
+//     try {
+//         const docs = await MedicinModel.insertMany(medicin);
+//         return Promise.resolve(docs);
+//     } catch (err) {
+//         return Promise.reject(err)
+//     }
+// };
 
-insertmedicin()
-    .then((docs) => console.log(docs))
-    .catch((err) => console.log(err))
+// insertmedicin()
+//     .then((docs) => console.log(docs))
+//     .catch((err) => console.log(err))
+
+
+// ---------------- DATA DELETE REQUEST ---------------- //
+medicinRouter.delete("/delete/:id", async (request, response) => {
+    const ID = request.params.id;
+
+    try {
+        await MedicinModel.findByIdAndDelete({ _id: ID });
+        response.send({ "Message": ` Item of id: ${ID} is successfully deleted from cart` });
+    } catch (error) {
+        response.send({ "Message": "Cannot able to get the data", "Error": error.message });
+    }
+});
+
+
+// ---------------- CART DATA UPDATE REQUEST ---------------- //
+medicinRouter.patch("/update/:id", async (request, response) => {
+    const ID = request.params.id;
+    const payload = request.body;
+
+    try {
+        await MedicinModel.findByIdAndUpdate({ _id: ID }, payload);
+        response.send({ "Message": `Item of id: ${ID} is successfully updated from cart` });
+    } catch (error) {
+        response.send({ "Message": "Cannot able to update the data", "Error": error.message });
+    }
+});
 
 
 module.exports = { medicinRouter };

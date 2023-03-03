@@ -82,19 +82,19 @@ solarpanelRouter.get("/", async (request, response) => {
     }
 });
 
-const solarpanel = require('../Assets/solarpanel.json');
-const insertsolarpanel = async () => {
-    try {
-        const docs = await SolarpanelModel.insertMany(solarpanel);
-        return Promise.resolve(docs);
-    } catch (err) {
-        return Promise.reject(err)
-    }
-};
+// const solarpanel = require('../Assets/solarpanel.json');
+// const insertsolarpanel = async () => {
+//     try {
+//         const docs = await SolarpanelModel.insertMany(solarpanel);
+//         return Promise.resolve(docs);
+//     } catch (err) {
+//         return Promise.reject(err)
+//     }
+// };
 
-insertsolarpanel ()
-    .then((docs) => console.log(docs))
-    .catch((err) => console.log(err))
+// insertsolarpanel ()
+//     .then((docs) => console.log(docs))
+//     .catch((err) => console.log(err))
 
 
 module.exports = { solarpanelRouter };

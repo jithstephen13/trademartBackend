@@ -15,22 +15,22 @@ Creating a backend project for Anthropologie website, where the API is provided 
 
 
 #### for filtering use this url
-`http://localhost:8080/sofas?company=${company}`
+`http://localhost:8080/medicin?company=${company}`
 
-filtering with pagination
-`http://localhost:8080/sofas?page=1&limit=5&&company=${company}`
+### filtering with pagination
+`http://localhost:8080/medicin?page=1&limit=5&&company=${company}`
 
 #### for pagination url
-`http://localhost:8080/sofas?page=2&limit=10`
+`http://localhost:8080/medicin?page=2&limit=10`
 
 #### for sorting url 
-`http://localhost:8080/sofas?sort=rating,asc`
-`http://localhost:8080/sofas?sort=rating,desc`
+`http://localhost:8080/medicin?sort=rating,asc`
+`http://localhost:8080/medicin?sort=rating,desc`
 
-<!-- `http://localhost:8080/sofas?page=1&limit=5&&company=Durian&sort=rating,desc` -->
+<!-- `http://localhost:8080/medicin?page=1&limit=5&&company=Durian&sort=rating,desc` -->
 
 #### for searching url
-`http://localhost:8080/sofas?search=sea`
+`http://localhost:8080/medicin?search=sea`
 
 
 
@@ -42,6 +42,8 @@ filtering with pagination
 #### for verifying purpose you can check following url
 
 #### it is the demo link to check
+
+### https://frail-gold-hen.cyclic.app/
  
 
 
