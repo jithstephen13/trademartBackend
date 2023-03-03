@@ -23,10 +23,10 @@ authRouter.get("/", async (request, response) => {
 
 // -------------------- USER REGISTRATION POST REQUEST -------------------- //
 authRouter.post("/register", async (request, response) => {
-    const { firstname, lastname, email, password } = request.body;
+    const { firstname, laststname, email, password } = request.body;
 
     try {
-        if (firstname && lastname && email && password ) {
+        if (firstname && laststname && email && password ) {
         const old_user = await AuthModel.find({ email: email });
         if (old_user.length > 0) {
             response.send({ "Message": "You're email address already exists, please Logged In" });
@@ -35,7 +35,7 @@ authRouter.post("/register", async (request, response) => {
                 if (error) {
                     response.send({ "Message": "Cannot able to hash the password", "Error": error });
                 } else {
-                    const new_user = new AuthModel({ first_name, last_name, email, password: hash, age, role });
+                    const new_user = new AuthModel({ firstname, laststname, email, password: hash, });
                     await new_user.save();
                     response.send({ "Message": "New User Successfully Registered! Please Logged In" });
                 }
@@ -61,9 +61,9 @@ authRouter.post("/login", async (request, response) => {
                 if (result) {
                     const token = jwt.sign({ userID: user[0]._id }, "auth", {expiresIn: 60 * 60 });
                     response.send({ 
-                        "Message": `${user[0].firstname} ${user[0].lastname} you are successfully logged in`, 
+                        "Message": `${user[0].firstname} ${user[0].laststname} you are successfully logged in`, 
                         "token": token, 
-                        "name": `${user[0].firstname} ${user[0].lastname}`,
+                        "name": `${user[0].firstname} ${user[0].laststname}`,
                         "role": `${user[0].role}`
                     });
                     // name and role
