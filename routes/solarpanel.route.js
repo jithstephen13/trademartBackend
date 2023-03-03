@@ -97,4 +97,44 @@ solarpanelRouter.get("/", async (request, response) => {
 //     .catch((err) => console.log(err))
 
 
+solarpanelRouter.delete("/delete/:id", async (request, response) => {
+    const ID = request.params.id;
+
+    try {
+        await SolarpanelModel.findByIdAndDelete({ _id: ID });
+        response.send({ "Message": ` Item of id: ${ID} is successfully deleted from cart` });
+    } catch (error) {
+        response.send({ "Message": "Cannot able to get the data", "Error": error.message });
+    }
+});
+
+
+// ----------------  DATA UPDATE REQUEST ---------------- //
+solarpanelRouter.patch("/update/:id", async (request, response) => {
+    const ID = request.params.id;
+    const payload = request.body;
+
+    try {
+        await SolarpanelModel.findByIdAndUpdate({ _id: ID }, payload);
+        response.send({ "Message": `Item of id: ${ID} is successfully updated ` });
+    } catch (error) {
+        response.send({ "Message": "Cannot able to update the data", "Error": error.message });
+    }
+});
+
+// ----------------post one data --------------------
+
+solarpanelRouter.post("/add", async (request, response) => {
+    const payload = request.body;
+   try {
+    const new_ = new SolarpanelModel(payload);
+    await new_.save();
+    response.send({ "Message": "Item Successfully Added !" })
+   } catch (error) {
+    
+   }
+});
+
+
+
 module.exports = { solarpanelRouter };
