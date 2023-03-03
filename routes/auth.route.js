@@ -23,10 +23,10 @@ authRouter.get("/", async (request, response) => {
 
 // -------------------- USER REGISTRATION POST REQUEST -------------------- //
 authRouter.post("/register", async (request, response) => {
-    const { first_name, last_name, email, password, age, role } = request.body;
+    const { firstname, lastname, email, password } = request.body;
 
     try {
-        if (first_name && last_name && email && password && role) {
+        if (firstname && lastname && email && password ) {
         const old_user = await AuthModel.find({ email: email });
         if (old_user.length > 0) {
             response.send({ "Message": "You're email address already exists, please Logged In" });
@@ -61,9 +61,9 @@ authRouter.post("/login", async (request, response) => {
                 if (result) {
                     const token = jwt.sign({ userID: user[0]._id }, "auth", {expiresIn: 60 * 60 });
                     response.send({ 
-                        "Message": `${user[0].first_name} ${user[0].last_name} you are successfully logged in`, 
+                        "Message": `${user[0].firstname} ${user[0].lastname} you are successfully logged in`, 
                         "token": token, 
-                        "name": `${user[0].first_name} ${user[0].last_name}`,
+                        "name": `${user[0].firstname} ${user[0].lastname}`,
                         "role": `${user[0].role}`
                     });
                     // name and role
