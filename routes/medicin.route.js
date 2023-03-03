@@ -116,5 +116,18 @@ medicinRouter.patch("/update/:id", async (request, response) => {
     }
 });
 
+// ----------------post one data --------------------
+
+medicinRouter.post("/add", async (request, response) => {
+    const payload = request.body;
+   try {
+    const new_ = new MedicinModel(payload);
+    await new_.save();
+    response.send({ "Message": "Item Successfully Added !" })
+   } catch (error) {
+    
+   }
+});
+
 
 module.exports = { medicinRouter };
