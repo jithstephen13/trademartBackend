@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 
 const addtocartSchema = mongoose.Schema({
-    _id:{ type: String,  },
+     
       img_src: { type: String, },
       name: { type: String, },
       price:{ type: String, },
