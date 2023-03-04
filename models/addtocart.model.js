@@ -17,6 +17,10 @@ const addtocartSchema = mongoose.Schema({
       key_re:{ type: String, } ,  
       original :{ type: String, } ,
       discount :{ type: String, } ,
+      date:{ type: String, },
+      qty:{ type: String, },
+      user_email:{ type: String, },
+      user_name:{ type: String, }
 
     
 }, {
